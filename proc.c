@@ -532,3 +532,24 @@ procdump(void)
     cprintf("\n");
   }
 }
+
+// Running process counter
+int
+getprocs()
+{
+	struct proc *p;
+	
+	// Enable interrupts on this processor.
+    sti();
+
+    // Loop over process table looking for process state.
+    acquire(&ptable.lock);
+    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+      if(p->state != UNUSED)
+		  cprintf("%s \t %d \t %s \t \n", p->name, p->pid, p->state);
+	}
+	
+	release(&ptable.lock);
+	
+	return 22;
+}
