@@ -545,8 +545,16 @@ getprocs()
     // Loop over process table looking for process state.
     acquire(&ptable.lock);
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-      if(p->state != UNUSED)
-		  cprintf("%s \t %d \t %s \t \n", p->name, p->pid, p->state);
+      if(p->state == EMBRYO)
+		  cprintf("%s \t %d \t EMBRYO \t \n", p->name, p->pid);
+	  else if(p->state == SLEEPING)
+		  cprintf("%s \t %d \t SLEEPING \t \n", p->name, p->pid);
+	  else if(p->state == RUNNABLE)
+		  cprintf("%s \t %d \t RUNNABLE \t \n", p->name, p->pid);
+	  else if(p->state == RUNNING)
+		  cprintf("%s \t %d \t RUNNING \t \n", p->name, p->pid);
+	  else if(p->state == ZOMBIE)
+		  cprintf("%s \t %d \t ZOMBIE \t \n", p->name, p->pid);
 	}
 	
 	release(&ptable.lock);
