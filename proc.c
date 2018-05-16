@@ -537,7 +537,7 @@ procdump(void)
 int
 getprocs()
 {
-	int count;
+	int count = 0;
 	struct proc *p;
 		
 	// Enable interrupts on this processor.
