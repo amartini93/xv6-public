@@ -569,6 +569,6 @@ getprocs()
 	}
 	
 	release(&ptable.lock);
-	cprintf("\t %d \t", count);
+	cprintf("\t %d \n", count);
 	return count;
 }
