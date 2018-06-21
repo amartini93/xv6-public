@@ -588,7 +588,7 @@ getprocs()
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state == EMBRYO){
 		  count ++;
-		  cprintf("%s \t %d \t EMBRYO \t \n", p->name, p->pid);
+		  cprintf("%s \t %d \t %d \t EMBRYO \t \n", p->name, p->pid, p->tickets);
 	  }
 	  else if(p->state == SLEEPING){
 		  count ++;
