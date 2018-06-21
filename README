@@ -1,2 +1,0 @@
-Debería estar funcionando el return de los procesos activos, pero no se como asegurarme que sea así. De que forma puedo mostrar el return de getprocs() en la consola?
-RESUELTO
