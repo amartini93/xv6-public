@@ -592,19 +592,19 @@ getprocs()
 	  }
 	  else if(p->state == SLEEPING){
 		  count ++;
-		  cprintf("%s \t %d \t SLEEPING \t \n", p->name, p->pid);
+		  cprintf("%s \t %d \t %d \t SLEEPING \t \n", p->name, p->pid, p->tickets);
 	  }
 	  else if(p->state == RUNNABLE){
 		  count ++;
-		  cprintf("%s \t %d \t RUNNABLE \t \n", p->name, p->pid);
+		  cprintf("%s \t %d \t %d \t RUNNABLE \t \n", p->name, p->pid, p->tickets);
 	  }
 	  else if(p->state == RUNNING){
 		  count ++;
-		  cprintf("%s \t %d \t RUNNING \t \n", p->name, p->pid);
+		  cprintf("%s \t %d \t %d \t RUNNING \t \n", p->name, p->pid, p->tickets);
 	  }
 	  else if(p->state == ZOMBIE){
 		  count ++;
-		  cprintf("%s \t %d \t ZOMBIE \t \n", p->name, p->pid);
+		  cprintf("%s \t %d \t %d \t ZOMBIE \t \n", p->name, p->pid, p->tickets);
 	  }
 	}
 	
