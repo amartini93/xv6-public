@@ -176,7 +176,6 @@ UPROGS=\
 	_wc\
 	_ps\
 	_zombie\
-	_lotterytest\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
