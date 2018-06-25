@@ -623,7 +623,7 @@ int addr_translate(void* vaddr)
  pte_t *pte;
 
  pgdir = myproc()->pgdir
- cprintf("page directory base is: %p\n",cpu->ts.cr3);
+ cprintf("page directory base is: %p\n",myproc()->pgdir);
  pde = &pgdir[PDX(vaddr)];
  if(*pde & PTE_P){
  pgtab = (pte_t*)P2V(PTE_ADDR(*pde));
