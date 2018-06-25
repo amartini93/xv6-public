@@ -615,7 +615,7 @@ getprocs()
 
 int addr_translate(void* vaddr)
 {
- cprintf("vaddr = %p\n",argint(vaddr));
+ cprintf("vaddr = %p\n",vaddr);
  int paddr;
  pde_t *pgdir;
  pte_t *pgtab;
@@ -624,7 +624,7 @@ int addr_translate(void* vaddr)
 
  pgdir = myproc()->pgdir
  cprintf("page directory base is: %p\n",myproc()->pgdir);
- pde = &pgdir[PDX(argint(vaddr))];
+ pde = &pgdir[PDX(vaddr)];
  if(*pde & PTE_P){
  pgtab = (pte_t*)P2V(PTE_ADDR(*pde));
  }else{
@@ -633,9 +633,9 @@ int addr_translate(void* vaddr)
  cprintf("pte not present\n");
  return -1;
  }
- pte = &pgtab[PTX(argint(vaddr))];
+ pte = &pgtab[PTX(vaddr)];
  paddr = PTE_ADDR(*pte);
-  cprintf("the virtual address is %p\n",argint(vaddr));
+  cprintf("the virtual address is %p\n",vaddr);
   cprintf("the physical address is %d\n",paddr);
 
   return 0;
