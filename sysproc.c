@@ -109,3 +109,11 @@ sys_settickets(void){
   }
   return 0;
 }
+
+char*
+sys_addr_translate(char *s)
+{
+  argstr(0, &s);
+  addr_translate(s);
+  return s;
+}
