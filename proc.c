@@ -7,6 +7,7 @@
 #include "proc.h"
 #include "spinlock.h"
 #include "rand.h"
+#include "vm.c"
 
 struct {
   struct spinlock lock;
@@ -622,11 +623,11 @@ int addr_translate(char* virtual_address)
 
     pde = &pgdir[PDX(virtual_address)];
     if(*pde & PTE_P){
-    pgtab = (pte_t*)P2V(PTE_ADDR(*pde));
+		pgtab = (pte_t*)P2V(PTE_ADDR(*pde));
     }
     else
     {
-    cprintf("\n PTE Not Present! - Invalid Virtual address\n");
+		cprintf("\n PTE Not Present! - Invalid Virtual address\n");
     return -1;
     }
     cprintf("\n ----------------- \n");
@@ -634,7 +635,7 @@ int addr_translate(char* virtual_address)
     cprintf(" PTE_P : %d\n",PTE_P);
     cprintf("\n ----------------- \n");
 
-    //uva2ka
+    
     pte_t *pte;
     pte = &pgtab[PTX(virtual_address)];
     physical_address=(char*)V2P(PTE_ADDR(*pte));
